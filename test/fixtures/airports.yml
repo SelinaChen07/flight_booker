@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+syd:
+  city: Sydney
+  airport_code: SYD
+
+bne:
+  city: Brisbane
+  airport_code: BNE

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_airport: syd
+  to_airport: bne
+  flight_number: one
+  start_time: 2017-03-22 14:45:51
+  duration_in_minutes: 120
+
+
+two:
+  from_airport: bne
+  to_airport: syd
+  flight_number: two
+  start_time: 2017-03-22 19:45:51
+  duration_in_minutes: 120
+
