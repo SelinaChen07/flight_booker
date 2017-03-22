@@ -30,9 +30,7 @@ ActiveRecord::Schema.define(version: 20170322023551) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.index ["from_airport_id", "to_airport_id"], name: "index_flights_on_from_airport_id_and_to_airport_id"
-    t.index ["from_airport_id"], name: "index_flights_on_from_airport_id"
     t.index ["start_time"], name: "index_flights_on_start_time"
-    t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
   end
 
 end
