@@ -27,7 +27,7 @@ Airport.all.each do |from_airport|
 		5.times do |n|
 			flight_no = Faker::Code.asin
 			time = 6.hours+3*n.hours
-			30.times do |d|
+			10.times do |d|
 					f = Flight.create(from_airport_id: from_airport.id, to_airport_id: to_airport.id, flight_number: flight_no, start_time:Time.zone.now.beginning_of_day+time+d.day, duration_in_minutes:duration)
 			end
 		end
