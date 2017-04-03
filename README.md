@@ -56,6 +56,8 @@ eg:
 - missing name
 - missing email
 
+Consider if the user double click on "Book" button. To avoid duplicate booking for the same flight, booking model should validate if the same passenger already books the same flight to ensure uniqueness.
+
 (5) Show the booking information to confirm the booking
 
 

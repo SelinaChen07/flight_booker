@@ -1,0 +1,50 @@
+<h2>You Booking Information</h2>
+
+<h3>Booking Number: <%= @booking.id %></h3>
+
+<h3>Flight</h3>
+<table>
+		<thead>
+			<tr>
+				<th>Flight Number</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Start Time</th>
+				<th>Duration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @booking.flight.flight_number %></td>
+				<td><%= @booking.flight.from_airport.airport_code %></td>
+				<td><%= @booking.flight.to_airport.airport_code %></td>
+				<td><%= @booking.flight.start_time %></td>
+				<td><%= "#{@booking.flight.duration_in_minutes/60}h #{@booking.flight.duration_in_minutes%60}min" %></td>
+			</tr>
+		</tbody>
+	</table>	
+
+<h3>Passenger</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% count =1 %>
+		<% @booking.passengers.each do |p| %>
+			<tr>
+				<td><%= count  %></td>
+				<% count+=1 %>
+				<td><%= p.name %></td>
+				<td><%= p.email %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to "Back to search", root_path %>

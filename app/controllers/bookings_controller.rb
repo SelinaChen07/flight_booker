@@ -11,11 +11,15 @@ class BookingsController < ApplicationController
   	@booking = Booking.new(booking_params)
   	if !@booking.save
   		@flight = Flight.find(params[:booking][:flight_id])
-  		flash.now[:danger] = "Please make sure all the information in your form is correct."
   		render "new"
   	else
   		flash[:success] = "Your booking is confirmed."
+      redirect_to booking_path(@booking)
   	end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
