@@ -1,3 +1,5 @@
+
+
 <table>
 <%= form_tag(flights_path, method: :get)  do %>
 	<thead>
@@ -5,15 +7,15 @@
 			<th><%= label_tag :from, "From" %></th>
 			<th><%= label_tag :to, "To" %></th>
 			<th><%= label_tag :date, "Date" %></th>
-			<th><%= label_tag :passengers, "Passengers" %></th>
+			<th><%= label_tag :passenger_num, "Passengers" %></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td><%= select_tag(:from, options_for_select(@airport_options), prompt:"Select Airport")%></td>
 			<td><%= select_tag(:to, options_for_select(@airport_options), prompt:"Select Airport")%></td>
-			<td><%= date_select "date", "date", start_year: Time.now.year, end_year: Time.now.year+1 %></td>
-			<td><%= select_tag :passengers, options_for_select(1..9) %></td>
+			<td><%= date_select "date", "date", start_year: Time.now.year, end_year: Time.now.year+1, default: @default_date %></td>
+			<td><%= select_tag :passenger_num, options_for_select(1..9) %></td>
 		</tr>
 		<tr>
 			<td><%= submit_tag "Search" %></td>
@@ -21,3 +23,4 @@
 	</tbody>	
 <% end %>
 </table>
+

@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
   def index
   	@airport_options =  Airport.all.map{|a|[[a.city, a.airport_code].join("  "), a.id]}
+    @default_date = Flight.first.start_time.to_date
 
     if !params[:commit].nil?      
       if params[:from].empty? || params[:to].empty?
@@ -13,7 +14,7 @@ class FlightsController < ApplicationController
         @search = true
         search_date = Date.new(params[:date]["date(1i)"].to_i, params[:date]["date(2i)"].to_i, params[:date]["date(3i)"].to_i)
         @flights = Flight.where("from_airport_id = :from AND to_airport_id = :to", from: params[:from], to: params[:to]).where("start_time >= :date1 AND start_time < :date2", date1: search_date, date2:search_date+1.day)
-        @passengers = params[:passengers]
+        @passenger_num = params[:passenger_num]
         if @flights.empty?
           flash[:warning] = "There is no match flight."
           redirect_to flights_path

@@ -1,0 +1,42 @@
+<h2>Make Your Booking</h2>
+
+<h3>Your Flight Information</h3>
+<table>
+		<thead>
+			<tr>
+				<th>Flight Number</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Start Time</th>
+				<th>Duration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @flight.flight_number %></td>
+				<td><%= @flight.from_airport.airport_code %></td>
+				<td><%= @flight.to_airport.airport_code %></td>
+				<td><%= @flight.start_time %></td>
+				<td><%= "#{@flight.duration_in_minutes/60}h #{@flight.duration_in_minutes%60}min" %></td>
+			</tr>
+		</tbody>
+	</table>	
+
+<h3>Passenger Information</h3>
+
+<%= form_for @booking do |f| %>
+	
+	<%= f.hidden_field :flight_id %>			
+	<%= f.fields_for :passengers do |p| %>
+		<div>
+			<%= "Passenger #{p.index+1}" %>
+				<%= p.label :name %>
+				<%= p.text_field :name %>
+				<%= p.label :email %>
+				<%= p.email_field :email %>
+		</div>
+	<% end %>
+
+	<%= f.submit "Book" %>
+<% end %>
+

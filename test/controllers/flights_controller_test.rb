@@ -34,13 +34,13 @@ class FlightsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect back to index for flight search when there is no match flight" do
-    get flights_url(:from=>@from_airport.id, :to=>@to_airport.id, "date[date(1i)]"=>2000, "date[date(2i)]"=>1, "date[date(3i)]"=>01, :passengers=>1, :commit=>"Search")
+    get flights_url(:from=>@from_airport.id, :to=>@to_airport.id, "date[date(1i)]"=>2000, "date[date(2i)]"=>1, "date[date(3i)]"=>01, :passenger_num=>1, :commit=>"Search")
     assert_not flash.empty?
     assert_redirected_to flights_url
   end
 
   test "should return the search result" do
-    get flights_url(:from=>@from_airport.id, :to=>@to_airport.id, "date[date(1i)]"=>@flight.start_time.year, "date[date(2i)]"=>@flight.start_time.month, "date[date(3i)]"=>@flight.start_time.day, :passengers=>1, :commit=>"Search")
+    get flights_url(:from=>@from_airport.id, :to=>@to_airport.id, "date[date(1i)]"=>@flight.start_time.year, "date[date(2i)]"=>@flight.start_time.month, "date[date(3i)]"=>@flight.start_time.day, :passenger_num=>1, :commit=>"Search")
     assert flash.empty?
     assert_match "Pick up a flight", response.body
     assert_select "table", count:2
