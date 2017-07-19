@@ -27,7 +27,17 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.gmail.com',
+    :domain         => 'flightbooking.com',
+    :port           => 587,
+    :user_name      => ENV["GMAIL_USERNAME"],
+    :password       => ENV["GMAIL_PASSWORD"],
+    :authentication => :plain
+}
 
   config.action_mailer.perform_caching = false
 

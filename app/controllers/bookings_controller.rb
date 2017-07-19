@@ -13,7 +13,11 @@ class BookingsController < ApplicationController
   		@flight = Flight.find(params[:booking][:flight_id])
   		render "new"
   	else
-  		flash[:success] = "Your booking is confirmed."
+  		flash[:success] = "Your booking is confirmed. The confirmation email was sent to passengers' email box."
+      f = @booking.flight
+      @booking.passengers.each{|p|
+        PassengerMailer.booking_confirmation(f, p).deliver_now
+      }
       redirect_to booking_path(@booking)
   	end
   end

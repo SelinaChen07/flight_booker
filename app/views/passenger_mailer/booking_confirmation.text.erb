@@ -1,0 +1,9 @@
+Hi <%=@passenger.name %>
+Thank you for booking your flight with us. You booking is now confirmed. Please see below your booking information.
+
+
+Flight Number: <%= @flight.flight_number%>
+From: <%= @flight.from_airport.airport_code%>
+To: <%= @flight.to_airport.airport_code%>
+Start Time: <%= @flight.start_time%>
+Duration: <%= "#{@flight.duration_in_minutes/60}h #{@flight.duration_in_minutes%60}min"%>

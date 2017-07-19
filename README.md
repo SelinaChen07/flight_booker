@@ -58,6 +58,8 @@ eg:
 
 Consider if the user double click on "Book" button. To avoid duplicate booking for the same flight, booking model should validate if the same passenger already books the same flight to ensure uniqueness.
 
+send out booking confirmation email to passenger's email box by PassengerMailer.confirmation_email(f,p).deliver_now, we use gmail server to send the email here. Figaro gem is used to hide my gmail name and password.
+
 (5) Show the booking information to confirm the booking
 
 
